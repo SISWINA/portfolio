@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #36d1dc, #0036ab);
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #000000;
+            padding: 20px 0;
+        }
+        .header .navbar {
+            padding: 0;
+        }
+        .header .navbar-brand {
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+        .header .navbar-nav .nav-item .nav-link {
+            color: #ffffff;
+        }
+        .header a:hover {
+            background-color: #444444;
+        }
+
+        /* Active Link Styling */
+        .active {
+            background-color: #1d17cb;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            margin-top: 50px;
+        }
+
+        .portfolio-item {
+            background-color: #333333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .portfolio-item h3 {
+            margin-top: 10px;
+        }
+
+        /* Button Styling */
+        .btn-filter {
+            margin: 20px 10px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            background-color: #84ff41;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-filter:hover {
+            background-color: #5ccc2e;
+        }
+
+        /* Mobile view adjustments */
+        @media (max-width: 768px) {
+            .portfolio-item {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Siswina Kovvuri</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="skills.html">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="portfolio.html">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./images/resume1.pdf" download target="_blank">Download Resume</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Portfolio Section -->
+    <div class="container portfolio-section">
+        <div class="text-center">
+            <button class="btn-filter" onclick="showAll()">All Works</button>
+            <button class="btn-filter" onclick="showDevelopment()">Development</button>
+            <button class="btn-filter" onclick="showDesign()">Design</button>
+        </div>
+        
+        <div class="row mt-4" id="portfolio-container">
+            <!-- Development Works -->
+            <div class="col-md-4 portfolio-item development">
+                <img src="images/dev1.jpg" alt="Development Project 1">
+                <h3>Development Project 1</h3>
+            </div>
+            <div class="col-md-4 portfolio-item development">
+                <img src="images/dev2.jpg" alt="Development Project 2">
+                <h3>Development Project 2</h3>
+            </div>
+            <div class="col-md-4 portfolio-item development">
+                <img src="images/dev3.jpg" alt="Development Project 3">
+                <h3>Development Project 3</h3>
+            </div>
+
+            <!-- Design Works -->
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/design1.jpg" alt="Design Project 1">
+                <h3>Design Project 1</h3>
+            </div>
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/design2.jpg" alt="Design Project 2">
+                <h3>Design Project 2</h3>
+            </div>
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/design3.jpg" alt="Design Project 3">
+                <h3>Design Project 3</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (optional for form handling, but necessary for Bootstrap components) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Filter Portfolio items by category
+        function showAll() {
+            let items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => item.style.display = 'block');
+        }
+
+        function showDevelopment() {
+            let items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (item.classList.contains('development')) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function showDesign() {
+            let items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (item.classList.contains('design')) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Show all works by default
+        showAll();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #36d1dc, #0036ab);
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styles */
+        .header {
+            background-color: #000000;
+            padding: 20px 0;
+        }
+        .header .navbar {
+            padding: 0;
+        }
+        .header .navbar-brand {
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+        .header .navbar-nav .nav-item .nav-link {
+            color: #ffffff;
+        }
+        .header a:hover {
+            background-color: #444444;
+        }
+
+        /* Active Link Styling */
+        .active {
+            background-color: #1d17cb;
+        }
+
+        /* Main content styles */
+        .skills-container {
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        .skills-section {
+            background-color: #222222;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .skills-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .skill-card {
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffffff;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: scale(1.05);
+        }
+
+        .skill-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background-color: #555555;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .progress {
+            background-color: #84ff41;
+            height: 100%;
+            width: 0;
+            transition: width 1s ease;
+        }
+
+        /* Mobile View Adjustments */
+        @media (max-width: 768px) {
+            .header .navbar-nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-section {
+                margin-top: 30px;
+            }
+
+            .skill-card {
+                width: 100%;
+            }
+
+            .skill-card img {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Siswina Kovvuri</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="skills.html">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="portfolio.html">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./images/resume1.pdf" download target="_blank">Download Resume</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container skills-container">
+        <!-- Development Skills Section -->
+        <div class="skills-section">
+            <h2>Development Skills</h2>
+            <div class="row">
+                <!-- Skill Card 1 -->
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <img src="path/to/html-icon.png" alt="HTML">
+                        <div class="skill-name">HTML</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                        <p>90%</p>
+                    </div>
+                </div>
+                <!-- Skill Card 2 -->
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <img src="path/to/css-icon.png" alt="CSS">
+                        <div class="skill-name">CSS</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                        <p>85%</p>
+                    </div>
+                </div>
+                <!-- Skill Card 3 -->
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <img src="path/to/js-icon.png" alt="JavaScript">
+                        <div class="skill-name">JavaScript</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%;"></div>
+                        </div>
+                        <p>80%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design Skills Section -->
+        <div class="skills-section">
+            <h2>Design Skills</h2>
+            <div class="row">
+                <!-- Skill Card 1 -->
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <img src="path/to/ps-icon.png" alt="Photoshop">
+                        <div class="skill-name">Photoshop</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                        <p>75%</p>
+                    </div>
+                </div>
+                <!-- Skill Card 2 -->
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <img src="path/to/ai-icon.png" alt="Illustrator">
+                        <div class="skill-name">Illustrator</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 70%;"></div>
+                        </div>
+                        <p>70%</p>
+                    </div>
+                </div>
+                <!-- Skill Card 3 -->
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <img src="path/to/xd-icon.png" alt="Adobe XD">
+                        <div class="skill-name">Adobe XD</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 65%;"></div>
+                        </div>
+                        <p>65%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soft Skills Section -->
+        <div class="skills-section">
+            <h2>Soft Skills</h2>
+            <div class="row">
+                <!-- Soft Skill Card 1 -->
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-name">Communication</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 95%;"></div>
+                        </div>
+                        <p>95%</p>
+                    </div>
+                </div>
+                <!-- Soft Skill Card 2 -->
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-name">Teamwork</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 90%;"></div>
+                        </div>
+                        <p>90%</p>
+                    </div>
+                </div>
+                <!-- Soft Skill Card 3 -->
+                <div class="col-md-4">
+                    <div class="skill-card">
+                        <div class="skill-name">Problem Solving</div>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%;"></div>
+                        </div>
+                        <p>85%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
