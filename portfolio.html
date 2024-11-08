@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio</title>
-    <!-- Include Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -13,7 +12,6 @@
             font-family: Arial, sans-serif;
         }
 
-        /* Header styles */
         .header {
             background-color: #000000;
             padding: 20px 0;
@@ -32,12 +30,27 @@
             background-color: #444444;
         }
 
-        /* Active Link Styling */
         .active {
             background-color: #1d17cb;
         }
 
-        /* Portfolio Section */
+        .download-btn {
+            background-color: #41c9ff;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            margin-left: 15px; 
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background-color: #5ccc2e;
+            color: #ffffff;
+        }
+
         .portfolio-section {
             margin-top: 50px;
         }
@@ -61,7 +74,6 @@
             margin-top: 10px;
         }
 
-        /* Button Styling */
         .btn-filter {
             margin: 20px 10px;
             padding: 10px 20px;
@@ -84,13 +96,11 @@
             color: #ffffff;
         }
 
-        /* Hover effect on portfolio items */
         .portfolio-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Mobile view adjustments */
         @media (max-width: 768px) {
             .portfolio-item {
                 margin-bottom: 20px;
@@ -100,7 +110,6 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header class="header">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
@@ -126,7 +135,7 @@
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./images/resume1.pdf" download target="_blank">Download Resume</a>
+                            <a class="download-btn" href="./images/resume1.pdf" download>Download Resume</a>
                         </li>
                     </ul>
                 </div>
@@ -134,7 +143,6 @@
         </nav>
     </header>
 
-    <!-- Portfolio Section -->
     <div class="container portfolio-section">
         <div class="text-center">
             <button class="btn-filter active" onclick="showAll(this)">All Works</button>
@@ -144,7 +152,7 @@
         </div>
         
         <div class="row mt-4" id="portfolio-container">
-            <!-- Development Works -->
+
             <div class="col-md-4 portfolio-item development">
                 <img src="images/dev1.jpg" alt="Development Project 1">
                 <h3>Development Project 1</h3>
@@ -158,7 +166,6 @@
                 <h3>Development Project 3</h3>
             </div>
 
-            <!-- Design Works -->
             <div class="col-md-4 portfolio-item design">
                 <img src="images/design1.jpg" alt="Design Project 1">
                 <h3>Design Project 1</h3>
@@ -172,7 +179,6 @@
                 <h3>Design Project 3</h3>
             </div>
 
-            <!-- Figma Works -->
             <div class="col-md-4 portfolio-item figma">
                 <img src="images/figma1.jpg" alt="Figma Project 1">
                 <h3>Figma Project 1</h3>
@@ -188,7 +194,6 @@
         </div>
     </div>
 
-    <!-- Include Bootstrap JS (optional for form handling, but necessary for Bootstrap components) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -242,7 +247,6 @@
             clickedButton.classList.add('active');
         }
 
-        // Show all works by default
         showAll(document.querySelector('.btn-filter.active'));
     </script>
 

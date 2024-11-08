@@ -4,237 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
+    
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* General Styling */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
+        body {
             background: linear-gradient(#36d1dc, #0036ab);
             color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            justify-content: center; 
-            align-items: center; 
-            opacity: 0;
-            animation: fadeIn 2s forwards; 
+            font-family: Arial, sans-serif;
         }
 
-        /* Header Styling */
         .header {
-            background-color: #111111;
-            padding: 10px 20px; 
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            align-items: center;
-            width: 100%; 
-            position: fixed; 
-            top: 0;
-            z-index: 100; 
-            transform: translateY(-100%); 
-            animation: slideDown 1s forwards; 
+            background-color: #000000;
+            padding: 20px 0;
         }
-
-        /* Header Link Styling */
-        .header a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            padding: 10px 20px;
-            border-radius: 5px;
-        }
-
-        .header a:hover {
-            background-color: #444444;
-        }
-
-        /* Active Link Styling */
-        .active {
-            background-color: #1d17cb; 
-        }
-
-        /* General Container Styling */
-        .container {
-            max-width: 1200px;
-            background: hwb(233 0% 76%);
-            padding: 50px;
-            border-radius: 10px;
-            display: flex;
-            gap: 30px;
+        .header .navbar-brand {
+            font-size: 1.5rem;
             color: #ffffff;
-            flex-grow: 1;
-            margin-top: 100px;
-            margin-bottom: 30px; 
-            justify-content: center; 
-            align-items: center; 
-            opacity: 0;
-            animation: fadeInContent 2s 0.5s forwards; 
+        }
+        .header .navbar-nav .nav-item .nav-link {
+            color: #ffffff;
         }
 
-        /* About Section */
         .about-section {
-            flex: 1;
+            background-color: #222222;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 50px;
+            margin-bottom: 30px; 
         }
 
-        .about-section h2 {
-            font-size: 2.5rem;
+        .about-section h2, .education-section h3, .interests-section h3 {
+            text-align: center;
             margin-bottom: 20px;
         }
 
-        .about-section p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        /* Carousel Styling */
         .carousel {
-            width: 100%;
-            max-width: 500px;
             position: relative;
+            display: flex;
             overflow: hidden;
             margin: 20px 0;
-            border-radius: 10px;
+            max-width: 100%;
         }
 
         .carousel-images {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.5s ease;
         }
 
         .carousel-images img {
-            width: 100%;
-            border-radius: 10px;
-            object-fit: cover;
+            max-width: 100%;
+            display: block;
+            border-radius: 8px;
         }
 
         .carousel-control {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px;
-            font-size: 18px;
+            font-size: 2rem;
+            color: #ffffff;
             cursor: pointer;
+            user-select: none;
         }
 
-        .prev {
+        .carousel-control.prev {
             left: 10px;
         }
 
-        .next {
+        .carousel-control.next {
             right: 10px;
         }
 
-        /* Education Section */
-        .education-section {
-            flex: 2;
-        }
-
-        .education-section h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .education-item {
-            margin-bottom: 15px;
-        }
-
-        .education-item h4 {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
-            color: #7baefb;
-        }
-
-        .education-item p {
-            margin: 0;
-            font-size: 1rem;
-            color: #dbdbdb;
-        }
-
-        /* Interests Section */
-        .interests-section {
-            margin-top: 20px;
-        }
-
-        .interests-section h3 {
-            font-size: 1.5rem;
+        .education-item, .interest-item {
             margin-bottom: 10px;
         }
 
         .interests-list {
             display: flex;
-            gap: 15px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .interest-item {
-            background-color: #000000;
-            padding: 10px 15px;
+            background-color: #333333;
+            color: #84ff41;
+            padding: 10px;
+            margin: 5px;
             border-radius: 5px;
-            color: #ffffff;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.3s ease, transform 0.3s ease; 
+            text-align: center;
         }
 
-        .interest-item:hover {
-            background-color: #84ff41; 
-            color:#111111;
-            transform: scale(1.1); 
-        }
-
-        /* Keyframe Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInContent {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
     </style>
 </head>
 <body>
-    <!-- Header Section -->
-    <div class="header">
-        <a href="index.html">Home</a> 
-        <a href="about.html" class="active">About</a> 
-        <a href="skills.html">Skills</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="contact.html">Contact</a>
-        <a href="./images/resume1.pdf" download>Download Resume</a>
-    </div>
 
-    <!-- Main Content Section -->
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Siswina Kovvuri</a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="skills.html">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="portfolio.html">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link download-btn" href="./images/resume1.pdf" download target="_blank">Download Resume</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- About Me Section -->
     <div class="container">
-        <!-- About Me Section -->
         <div class="about-section">
             <h2>About Me</h2>
-            <!-- Carousel for Certificates -->
             <div class="carousel">
                 <div class="carousel-images">
                     <img src="path/to/certificate1.jpg" alt="Certificate 1">
@@ -249,7 +147,6 @@
             <p><strong>Certification:</strong> Completed UI/UX Developer Certification from Tech Mahindra SMART Academy, Vishakapatnam.</p>
         </div>
 
-        <!-- Education Section -->
         <div class="education-section">
             <h3>Educational Qualifications</h3>
             <div class="education-item">
@@ -264,17 +161,16 @@
                 <h4>High School</h4>
                 <p>The Presidential School (CBSE), 2016 - 2018</p>
             </div>
+        </div>
 
-            <!-- Interests Section -->
-            <div class="interests-section">
-                <h3>Interests</h3>
-                <div class="interests-list">
-                    <div class="interest-item">Front-End Development</div>
-                    <div class="interest-item">Prototypes</div>
-                    <div class="interest-item">Posters</div>
-                    <div class="interest-item">Flyers</div>
-                    <div class="interest-item">Mockup Screens</div>
-                </div>
+        <div class="interests-section">
+            <h3>Interests</h3>
+            <div class="interests-list">
+                <div class="interest-item">Front-End Development</div>
+                <div class="interest-item">Prototypes</div>
+                <div class="interest-item">Posters</div>
+                <div class="interest-item">Flyers</div>
+                <div class="interest-item">Mockup Screens</div>
             </div>
         </div>
     </div>
@@ -289,5 +185,6 @@
             document.querySelector('.carousel-images').style.transform = newTransform;
         }
     </script>
+
 </body>
 </html>
