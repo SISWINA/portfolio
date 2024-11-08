@@ -23,8 +23,8 @@
         .profile-image-wrapper {
             display: inline-block;
             position: relative;
-            width: 250px;
-            height: 250px;
+            width: 350px;  /* Increased size */
+            height: 350px; /* Increased size */
             border-radius: 15px;  /* Rounded corners */
             overflow: hidden;
         }
@@ -45,7 +45,7 @@
             right: 0;
             bottom: 0;
             border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 1), 0 0 40px rgba(0, 255, 255, 0.7);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.8), 0 0 30px rgba(255, 0, 255, 1), 0 0 40px rgba(255, 105, 180, 0.7); /* Purple & Pink */
             transition: all 0.3s ease-in-out;
             animation: neonGlow 2s linear infinite, rotateGlow 4s linear infinite;
         }
@@ -53,10 +53,10 @@
         /* Neon glow animation */
         @keyframes neonGlow {
             0% {
-                box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 1), 0 0 40px rgba(0, 255, 255, 0.7);
+                box-shadow: 0 0 20px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 0, 255, 1), 0 0 40px rgba(255, 20, 147, 0.7);
             }
             100% {
-                box-shadow: 0 0 40px rgb(55, 0, 255), 0 0 60px rgba(0, 255, 255, 0.7), 0 0 80px rgba(0, 255, 255, 1);
+                box-shadow: 0 0 40px rgba(255, 20, 147, 0.8), 0 0 60px rgba(255, 0, 255, 1), 0 0 80px rgba(255, 105, 180, 1);
             }
         }
 
