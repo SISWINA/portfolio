@@ -20,8 +20,54 @@
             }
         }
 
+        .profile-image-wrapper {
+            display: inline-block;
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border-radius: 15px;  /* Rounded corners */
+            overflow: hidden;
+        }
+
         .profile-image {
             animation: fadeInZoom 1.5s ease-out forwards;
+            width: 100%; /* Full width of the wrapper */
+            height: 100%; /* Full height of the wrapper */
+            object-fit: cover;
+        }
+
+        /* Neon glow effect (on pseudo-element) */
+        .profile-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 1), 0 0 40px rgba(0, 255, 255, 0.7);
+            transition: all 0.3s ease-in-out;
+            animation: neonGlow 2s linear infinite, rotateGlow 4s linear infinite;
+        }
+
+        /* Neon glow animation */
+        @keyframes neonGlow {
+            0% {
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), 0 0 30px rgba(0, 255, 255, 1), 0 0 40px rgba(0, 255, 255, 0.7);
+            }
+            100% {
+                box-shadow: 0 0 40px rgb(55, 0, 255), 0 0 60px rgba(0, 255, 255, 0.7), 0 0 80px rgba(0, 255, 255, 1);
+            }
+        }
+
+        /* Adding rotating glow effect around the image */
+        @keyframes rotateGlow {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Typing Animation */
@@ -34,26 +80,11 @@
             }
         }
 
-        /* Keyframes for switching between text */
-        @keyframes textChange {
-            0% {
-                content: "I'm a UI/UX Developer";
-            }
-            50% {
-                content: "I'm a UI/UX Designer";
-            }
-            100% {
-                content: "I'm a UI/UX Developer";
-            }
-        }
-
-        /* Main container of the typed-text */
         .typed-text-wrapper {
             display: inline-block;
             position: relative;
         }
 
-        /* Style for the typing effect */
         .typed-text {
             display: inline-block;
             overflow: hidden;
@@ -62,7 +93,7 @@
             font-family: Arial, sans-serif;
             font-size: 1.5rem;
             width: 0;
-            animation: typing 4s steps(30) 1s forwards, blinkCaret 0.75s step-end infinite, changeText 8s infinite;
+            animation: typing 4s steps(30) 1s forwards, blinkCaret 0.75s step-end infinite;
         }
 
         /* Blinking caret animation */
@@ -72,19 +103,47 @@
             }
         }
 
-        /* Changing the text every 4 seconds */
-        @keyframes changeText {
-            0% {
-                content: "I'm a UI/UX Developer";
-            }
-            50% {
-                content: "I'm a UI/UX Designer";
-            }
-            100% {
-                content: "I'm a UI/UX Developer";
-            }
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Social Icons */
+        .social-icons a {
+            margin: 0 15px;
+            color: white;
+            font-size: 2rem;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .social-icons a:hover {
+            color: #00FFFF;
+            transform: scale(1.2);
+        }
+
+        /* Adjusting layout for small screens */
+        @media (max-width: 768px) {
+            .social-icons {
+                margin-top: 20px;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
     </style>
 </head>
 <body>
@@ -109,21 +168,36 @@
                     <a href="about.html">About</a>
                     <a href="skills.html">Skills</a>
                     <a href="portfolio.html">Portfolio</a>
-                    <a href="contact.html" >Contact</a>
-                    <a href="./images/resume1.pdf" download target="_blank" style="color: white; text-decoration: none;">Download Resume</a>
+                    <a href="contact.html">Contact</a>
+                    <!-- Download Resume Button -->
+                    <a href="./images/resume1.pdf" download target="_blank" class="download-btn">Download Resume</a>
                 </div>
             </div>
 
             <!-- Social Media Icons -->
             <div class="social-icons mt-4">
-                <a href="https://wa.me/yourphonenumber" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
-                <a href="https://linkedin.com/in/yourprofile" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                <!-- WhatsApp Icon -->
+                <a href="https://wa.me/9390474256" target="_blank" title="WhatsApp">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+                
+                <!-- LinkedIn Icon (Updated with correct profile) -->
+                <a href="https://linkedin.com/in/kovvuri-siswina-28sk3" target="_blank" title="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+
+                <!-- Gmail Icon -->
+                <a href="mailto:kovvuri2803@gmail.com" target="_blank" title="Gmail">
+                    <i class="bi bi-envelope"></i>
+                </a>
             </div>
         </div>
 
         <!-- Right Column - Image -->
         <div class="col-lg-6">
-            <img src="images/me.png" alt="Profile Image" class="profile-image">
+            <div class="profile-image-wrapper">
+                <img src="images/me.png" alt="Profile Image" class="profile-image">
+            </div>
         </div>
     </div>
 </div>

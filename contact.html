@@ -8,7 +8,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #36d1dc, #0036ab);
+            background: linear-gradient(#36d1dc, #0036ab);
             color: #ffffff;
             font-family: Arial, sans-serif;
         }
@@ -78,39 +78,18 @@
             background-color: #5ccc2e;
         }
 
+        /* Error message styling */
+        .error-message {
+            color: #ff4d4d;
+            text-align: center;
+            margin-top: 15px;
+        }
+
         /* Mobile view adjustments */
         @media (max-width: 768px) {
             .contact-form {
                 margin-top: 30px;
                 padding: 20px;
-            }
-        }
-
-        /* Keyframe Animations */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInContent {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
             }
         }
     </style>
@@ -140,7 +119,7 @@
                             <a class="nav-link" href="portfolio.html">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="contact.html">Contact</a> <!-- Added 'active' class here -->
+                            <a class="nav-link active" href="contact.html">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="./images/resume1.pdf" download target="_blank">Download Resume</a>
@@ -155,30 +134,31 @@
     <div class="container">
         <div class="contact-form">
             <h2>Contact Us</h2>
-            <form>
+            <form id="contactForm" onsubmit="return validateForm()">
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number">
+                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea class="form-control" id="message" rows="4" placeholder="Your message"></textarea>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Your message" required></textarea>
                 </div>
                 <button type="submit" class="btn-submit">Submit</button>
+                <div id="error-message" class="error-message" style="display: none;">Please fill in all fields.</div>
             </form>
         </div>
     </div>
@@ -187,5 +167,24 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JavaScript for form validation -->
+    <script>
+        function validateForm() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var message = document.getElementById("message").value;
+
+            if (firstName === "" || lastName === "" || email === "" || phone === "" || message === "") {
+                document.getElementById("error-message").style.display = "block";
+                return false; // Prevent form submission
+            }
+
+            // If all fields are filled, return true (form is valid)
+            return true;
+        }
+    </script>
 </body>
 </html>

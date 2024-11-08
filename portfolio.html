@@ -48,6 +48,7 @@
             padding: 20px;
             margin: 10px;
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .portfolio-item img {
@@ -71,10 +72,22 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .btn-filter:hover {
             background-color: #5ccc2e;
+        }
+
+        .btn-filter.active {
+            background-color: #1d17cb;
+            color: #ffffff;
+        }
+
+        /* Hover effect on portfolio items */
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         /* Mobile view adjustments */
@@ -124,9 +137,10 @@
     <!-- Portfolio Section -->
     <div class="container portfolio-section">
         <div class="text-center">
-            <button class="btn-filter" onclick="showAll()">All Works</button>
-            <button class="btn-filter" onclick="showDevelopment()">Development</button>
-            <button class="btn-filter" onclick="showDesign()">Design</button>
+            <button class="btn-filter active" onclick="showAll(this)">All Works</button>
+            <button class="btn-filter" onclick="showDevelopment(this)">Development</button>
+            <button class="btn-filter" onclick="showDesign(this)">Design</button>
+            <button class="btn-filter" onclick="showFigma(this)">Figma</button>
         </div>
         
         <div class="row mt-4" id="portfolio-container">
@@ -157,6 +171,20 @@
                 <img src="images/design3.jpg" alt="Design Project 3">
                 <h3>Design Project 3</h3>
             </div>
+
+            <!-- Figma Works -->
+            <div class="col-md-4 portfolio-item figma">
+                <img src="images/figma1.jpg" alt="Figma Project 1">
+                <h3>Figma Project 1</h3>
+            </div>
+            <div class="col-md-4 portfolio-item figma">
+                <img src="images/figma2.jpg" alt="Figma Project 2">
+                <h3>Figma Project 2</h3>
+            </div>
+            <div class="col-md-4 portfolio-item figma">
+                <img src="images/figma3.jpg" alt="Figma Project 3">
+                <h3>Figma Project 3</h3>
+            </div>
         </div>
     </div>
 
@@ -166,12 +194,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        function showAll() {
+        function showAll(button) {
             let items = document.querySelectorAll('.portfolio-item');
             items.forEach(item => item.style.display = 'block');
+            updateActiveButton(button);
         }
 
-        function showDevelopment() {
+        function showDevelopment(button) {
             let items = document.querySelectorAll('.portfolio-item');
             items.forEach(item => {
                 if (item.classList.contains('development')) {
@@ -180,9 +209,10 @@
                     item.style.display = 'none';
                 }
             });
+            updateActiveButton(button);
         }
 
-        function showDesign() {
+        function showDesign(button) {
             let items = document.querySelectorAll('.portfolio-item');
             items.forEach(item => {
                 if (item.classList.contains('design')) {
@@ -191,10 +221,29 @@
                     item.style.display = 'none';
                 }
             });
+            updateActiveButton(button);
+        }
+
+        function showFigma(button) {
+            let items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (item.classList.contains('figma')) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            updateActiveButton(button);
+        }
+
+        function updateActiveButton(clickedButton) {
+            let buttons = document.querySelectorAll('.btn-filter');
+            buttons.forEach(button => button.classList.remove('active'));
+            clickedButton.classList.add('active');
         }
 
         // Show all works by default
-        showAll();
+        showAll(document.querySelector('.btn-filter.active'));
     </script>
 
 </body>
