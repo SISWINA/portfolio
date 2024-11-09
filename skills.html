@@ -119,6 +119,25 @@
             transition: width 1s ease;
         }
 
+        /* Back to Top Button */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #47cbff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+            transition: background-color 0.3s ease;
+        }
+        #backToTopBtn:hover {
+            background-color: #1d17cb;
+        }
+
         @keyframes fadeInDown {
             from {
                 opacity: 0;
@@ -361,6 +380,33 @@
             </div>
         </div>
     </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+
+    <script>
+        let currentSlide = 0;
+
+        function moveSlide(step) {
+            let images = document.querySelectorAll('.carousel-images img');
+            currentSlide = (currentSlide + step + images.length) % images.length;
+            document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Show or hide the Back to Top button based on scroll position
+        window.onscroll = function() {
+            const backToTopBtn = document.getElementById("backToTopBtn");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>

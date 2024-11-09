@@ -228,6 +228,25 @@
     background: rgba(0, 0, 0, 0.8);
 }
 
+ #backToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #47cbff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none; 
+            transition: background-color 0.3s ease;
+        }
+        #backToTopBtn:hover {
+            background-color: #1d17cb;
+        }
+
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -646,6 +665,32 @@
             });
 
             button.classList.add("active");
+        }
+    </script>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+
+    <script>
+        let currentSlide = 0;
+
+        function moveSlide(step) {
+            let images = document.querySelectorAll('.carousel-images img');
+            currentSlide = (currentSlide + step + images.length) % images.length;
+            document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        window.onscroll = function() {
+            const backToTopBtn = document.getElementById("backToTopBtn");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.style.display = "block";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
     
