@@ -6,106 +6,270 @@
     <title>Portfolio</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background: linear-gradient(135deg, #36d1dc, #0036ab);
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-        }
+        html, body {
+    height: 100%;
+    margin: 0;
+    }
 
-        .header {
-            background-color: #000000;
-            padding: 20px 0;
-        }
-        .header .navbar {
-            padding: 0;
-        }
-        .header .navbar-brand {
-            font-size: 1.5rem;
-            color: #ffffff;
-        }
-        .header .navbar-nav .nav-item .nav-link {
-            color: #ffffff;
-        }
-        .header a:hover {
-            background-color: #444444;
-        }
+    body {
+    background: linear-gradient(#36d1dc, #0036ab);
+    background-attachment: fixed;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    }
 
-        .active {
-            background-color: #1d17cb;
-        }
+    .header {
+    background-color: #000000;
+    padding: 20px 0;
+    opacity: 0;
+    transform: translateY(-50px);
+    }
 
-        .download-btn {
-            background-color: #41c9ff;
-            color: #000000;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-decoration: none;
-            margin-left: 15px; 
-            display: inline-block;
-        }
+    .header .navbar {
+    padding: 0;
+    }
 
-        .download-btn:hover {
-            background-color: #5ccc2e;
-            color: #ffffff;
-        }
+    .header .navbar-brand {
+    font-size: 1.5rem;
+    color: #ffffff;
+    }
 
-        .portfolio-section {
-            margin-top: 50px;
-        }
+    .header .navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+    }
 
-        .portfolio-item {
-            background-color: #333333;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    .header a:hover {
+    background-color: #444444;
+    }
 
-        .portfolio-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
+    .active {
+    background-color: #1d17cb;
+    }
 
-        .portfolio-item h3 {
-            margin-top: 10px;
-        }
+    .download-btn {
+    background-color: #41c9ff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    margin-left: 15px;
+    display: inline-block;
+    }
 
-        .btn-filter {
-            margin: 20px 10px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            background-color: #84ff41;
-            color: #000000;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    .download-btn:hover {
+    background-color: #5ccc2e;
+    color: #ffffff;
+    }
 
-        .btn-filter:hover {
-            background-color: #5ccc2e;
-        }
+   .portfolio-section {
+    margin-top: 50px;
+    }
 
-        .btn-filter.active {
-            background-color: #1d17cb;
-            color: #ffffff;
-        }
+    .portfolio-item {
+    position: relative; 
+    background-color: #00024a;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 25px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    overflow: hidden;
+    }
 
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
 
-        @media (max-width: 768px) {
-            .portfolio-item {
-                margin-bottom: 20px;
-            }
-        }
+    .portfolio-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+    position: relative;
+    }
+
+   .portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #ff6b6b, #ffd700, #8500bd, #1e90ff, #32cd32, #ff1493);
+    background-size: 400% 400%;
+    z-index: 1; 
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: gradientShift 3s ease infinite;
+    }
+
+
+   .portfolio-item:hover::before {
+    opacity: 0.6; 
+    }
+
+   .portfolio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    z-index: 2; 
+    }
+
+
+   .portfolio-item h3 {
+    color: #ffffff;
+    transition: color 0.5s ease;
+    }
+
+
+   .portfolio-item:hover {
+    border: 5px solid transparent;
+    box-shadow: 0 0 20px rgb(255, 255, 255);
+    animation: glowBorder 1.5s ease-out infinite;
+    }
+
+
+     @keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+   }
+
+
+
+.btn-filter {
+    margin: 10px;
+    padding: 10px 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #84ff41;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-filter:hover {
+    background-color: #000742;
+    color: #ffffff;
+}
+
+.btn-filter.active {
+    background-color: #010545;
+    color: #ffffff;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item .buttons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 3; 
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover .buttons {
+    display: block;
+    opacity: 1; 
+}
+
+.buttons a {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.buttons a:hover {
+    background-color: #0d0047;
+    color: #ffffff;
+}
+
+.portfolio-item .project-screenshot {
+    display: none;
+}
+
+.portfolio-item:hover .project-screenshot {
+    display: block;
+}
+
+.back-arrow {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 2rem;
+    color: #ffffff;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.back-arrow:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio-item.animate {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.header.animate {
+    animation: slideDown 1s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+    .portfolio-item {
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        height: auto;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -113,7 +277,7 @@
     <header class="header">
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">Siswina Kovvuri</a>
+                <a class="navbar-brand" href="index.html">Siswina Kovvuri</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -151,104 +315,343 @@
             <button class="btn-filter" onclick="showFigma(this)">Figma</button>
         </div>
         
-        <div class="row mt-4" id="portfolio-container">
+        <div class="row mt-4 justify-content-center" id="portfolio-container">
+            <div class="col-md-4 portfolio-item development">
+                <img src="images/hcb.png" alt="Development Project 1">
+                <h3>HTML</h3>
+                <div class="buttons">
+                    <a href="https://github.com/SISWINA/HtmlRepo.git" target="_blank">Source Code</a>
+                    <a href="https://siswina.github.io/HtmlRepo/" target="_blank">Preview</a>
+                </div>
+            </div>
 
             <div class="col-md-4 portfolio-item development">
-                <img src="images/dev1.jpg" alt="Development Project 1">
-                <h3>Development Project 1</h3>
+                <img src="images/javascript.png" alt="Development Project 2">
+                <h3>Java Script</h3>
+                <div class="buttons">
+                    <a href="https://github.com/SISWINA/JavaScriptRepo.git" target="_blank">Source Code</a>
+                    <a href="https://siswina.github.io/JavaScriptRepo/" target="_blank">Preview</a>
+                </div>
             </div>
+
             <div class="col-md-4 portfolio-item development">
-                <img src="images/dev2.jpg" alt="Development Project 2">
-                <h3>Development Project 2</h3>
+                <img src="images/rjs.png" alt="Development Project 3">
+                <h3>React JS</h3>
+                <div class="buttons">
+                    <a href="https://github.com/SISWINA/reactjs.git" target="_blank">Source Code</a>
+                    <a href="https://siswina.github.io/reactjs/" target="_blank">Preview</a>
+                </div>
             </div>
+
             <div class="col-md-4 portfolio-item development">
-                <img src="images/dev3.jpg" alt="Development Project 3">
-                <h3>Development Project 3</h3>
+                <img src="images/wp1.png" alt="Development Project 4">
+                <h3> WordPress Static</h3>
+                <div class="buttons">
+                    <a href="https://dev-healthcaresk.pantheonsite.io/" target="_blank">Preview</a>
+                </div>
+            </div>
+
+            <div class="col-md-4 portfolio-item development">
+                <img src="images/wp2.png" alt="Development Project 5">
+                <h3> WordPress Dynamic</h3>
+                <div class="buttons">
+                    <a href="https://dev-storesk.pantheonsite.io/" target="_blank">Preview</a>
+                </div>
             </div>
 
             <div class="col-md-4 portfolio-item design">
-                <img src="images/design1.jpg" alt="Design Project 1">
-                <h3>Design Project 1</h3>
+                <img src="images/wl.png" alt="Design Project 9" data-toggle="modal" data-target="#imageModal9">
+                <h3>Web Layout</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal9">Preview</button>
+                </div>
             </div>
-            <div class="col-md-4 portfolio-item design">
-                <img src="images/design2.jpg" alt="Design Project 2">
-                <h3>Design Project 2</h3>
+            
+            <!-- Modal for Web Layout -->
+            <div class="modal fade" id="imageModal9" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel9" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel9">Web Layout</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/WEBLAYOUT.png" alt="Preview Image 9" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
             <div class="col-md-4 portfolio-item design">
-                <img src="images/design3.jpg" alt="Design Project 3">
-                <h3>Design Project 3</h3>
+                <img src="images/VIZAG.png" alt="Design Project 1" data-toggle="modal" data-target="#imageModal1">
+                <h3>FLYER 1</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal1">Preview</button>
+                </div>
+            </div>
+            
+            <!-- Modal for FLYER 1 -->
+            <div class="modal fade" id="imageModal1" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel1">FLYER 1</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/VIZAG.png" alt="Preview Image 1" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/uiux.png" alt="Design Project 2" data-toggle="modal" data-target="#imageModal2">
+                <h3>FLYER 2</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal2">Preview</button>
+                </div>
+            </div>
+            
+            <!-- Modal for FLYER 2 -->
+            <div class="modal fade" id="imageModal2" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel2" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel2">FLYER 2</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/uiux.png" alt="Preview Image 2" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/travel.png" alt="Design Project 3" data-toggle="modal" data-target="#imageModal3">
+                <h3>FLYER 3</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal3">Preview</button>
+                </div>
+            </div>
+            
+            <!-- Modal for FLYER 3 -->
+            <div class="modal fade" id="imageModal3" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel3" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel3">FLYER 3</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/travel.png" alt="Preview Image 3" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/serenehomes.png" alt="Design Project 4" data-toggle="modal" data-target="#imageModal4">
+                <h3>FLYER 4</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal4">Preview</button>
+                </div>
+            </div>
+            
+            <!-- Modal for FLYER 4 -->
+            <div class="modal fade" id="imageModal4" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel4" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel4">FLYER 4</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/serenehomes.png" alt="Preview Image 4" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/Gab.png" alt="Design Project 5" data-toggle="modal" data-target="#imageModal5">
+                <h3>POSTER 1</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal5">Preview</button>
+                </div>
+            </div>
+            
+            <!-- Modal for POSTER 1 -->
+            <div class="modal fade" id="imageModal5" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel5" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel5">POSTER 1</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/Gab.png" alt="Preview Image 5" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/poster2.png" alt="Design Project 6" data-toggle="modal" data-target="#imageModal6">
+                <h3>POSTER 2</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal6">Preview</button>
+                </div>
+            </div>
+            
+            <!-- Modal for POSTER 2 -->
+            <div class="modal fade" id="imageModal6" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel6" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel6">POSTER 2</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/poster2.png" alt="Preview Image 6" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/webinar.png" alt="Design Project 7" data-toggle="modal" data-target="#imageModal7">
+                <h3>POSTER 3</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal7">Preview</button>
+                </div>
+            </div>
+            
+            <!-- Modal for POSTER 3 -->
+            <div class="modal fade" id="imageModal7" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel7" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel7">POSTER 3</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/webinar.png" alt="Preview Image 7" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 portfolio-item design">
+                <img src="images/medical.png" alt="Design Project 8" data-toggle="modal" data-target="#imageModal8">
+                <h3>POSTER 4</h3>
+                <div class="buttons">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#imageModal8">Preview</button>
+                </div>
+            </div>
+            
+            <!-- Modal for POSTER 4 -->
+            <div class="modal fade" id="imageModal8" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel8" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="imageModalLabel8">POSTER 4</h5>
+                        </div>
+                        <div class="modal-body">
+                            <img src="images/medical.png" alt="Preview Image 8" class="img-fluid">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col-md-4 portfolio-item figma">
+                <img src="images/mobile.png" alt="Figma Project 1">
+                <h3>Figma Mobile App</h3>
+                <div class="buttons">
+                    <a href="https://www.figma.com/proto/Nyco2we3oL00dIcVSH3exq/MOBILE-APP?node-id=41-9&node-type=frame&t=LIvXJ2OQXZvUGRNB-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A2" target="_blank">Preview</a>
+                </div>
             </div>
 
             <div class="col-md-4 portfolio-item figma">
-                <img src="images/figma1.jpg" alt="Figma Project 1">
-                <h3>Figma Project 1</h3>
-            </div>
-            <div class="col-md-4 portfolio-item figma">
-                <img src="images/figma2.jpg" alt="Figma Project 2">
-                <h3>Figma Project 2</h3>
-            </div>
-            <div class="col-md-4 portfolio-item figma">
-                <img src="images/figma3.jpg" alt="Figma Project 3">
-                <h3>Figma Project 3</h3>
+                <img src="images/web.png" alt="Figma Project 1">
+                <h3>Figma Web App</h3>
+                <div class="buttons">
+                    <a href="" target="_blank">Preview</a>
+                </div>
             </div>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const header = document.querySelector(".header");
+            header.classList.add("animate");
+
+            const portfolioItems = document.querySelectorAll(".portfolio-item");
+            portfolioItems.forEach(item => {
+                item.classList.add("animate");
+            });
+        });
+
         function showAll(button) {
-            let items = document.querySelectorAll('.portfolio-item');
-            items.forEach(item => item.style.display = 'block');
-            updateActiveButton(button);
+            filterItems('all', button);
         }
 
         function showDevelopment(button) {
-            let items = document.querySelectorAll('.portfolio-item');
-            items.forEach(item => {
-                if (item.classList.contains('development')) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-            updateActiveButton(button);
+            filterItems('development', button);
         }
 
         function showDesign(button) {
-            let items = document.querySelectorAll('.portfolio-item');
-            items.forEach(item => {
-                if (item.classList.contains('design')) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-            updateActiveButton(button);
+            filterItems('design', button);
         }
 
         function showFigma(button) {
-            let items = document.querySelectorAll('.portfolio-item');
+            filterItems('figma', button);
+        }
+
+        function filterItems(category, button) {
+            const items = document.querySelectorAll(".portfolio-item");
             items.forEach(item => {
-                if (item.classList.contains('figma')) {
-                    item.style.display = 'block';
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = "block";
                 } else {
-                    item.style.display = 'none';
+                    item.style.display = "none";
                 }
             });
-            updateActiveButton(button);
-        }
 
-        function updateActiveButton(clickedButton) {
-            let buttons = document.querySelectorAll('.btn-filter');
-            buttons.forEach(button => button.classList.remove('active'));
-            clickedButton.classList.add('active');
-        }
+            const buttons = document.querySelectorAll(".btn-filter");
+            buttons.forEach(btn => {
+                btn.classList.remove("active");
+            });
 
-        showAll(document.querySelector('.btn-filter.active'));
+            button.classList.add("active");
+        }
     </script>
-
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 </body>
 </html>
