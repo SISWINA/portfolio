@@ -8,7 +8,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(#36d1dc, #0036ab);
+            background: linear-gradient(135deg, #00ffff, #1f51ff, #00d9d9, #0099ff);
             color: #ffffff;
             font-family: Arial, sans-serif;
             overflow-x: hidden;
@@ -74,38 +74,46 @@
 
         /* Carousel Styling */
         .carousel {
-            position: relative;
-            display: block;
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
-            margin: 20px 0;
+         position: relative;
+         display: block;
+         width: 100%;
+         max-width: 800px; 
+         margin: 20px auto; 
+         overflow: hidden;
         }
-        .carousel-images {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .carousel-images img {
-            width: 100%;
-            height: auto;
-            max-width: 100%;
-            border-radius: 8px;
-        }
-        .carousel-control {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: #ffffff;
-            cursor: pointer;
-            user-select: none;
-        }
-        .carousel-control.prev {
-            left: 10px;
-        }
-        .carousel-control.next {
-            right: 10px;
-        }
+
+       .carousel-images {
+       display: flex;
+       transition: transform 0.5s ease;
+       width: 100%;
+       }
+
+       .carousel-images img {
+       flex-shrink: 0;  
+       width: 100%;     
+       height: auto;    
+       max-width: 100%; 
+       border-radius: 8px;
+       }
+
+       .carousel-control {
+       position: absolute;
+       top: 50%;
+       transform: translateY(-50%);
+       font-size: 2rem;
+       color: #ffffff;
+       cursor: pointer;
+       user-select: none;
+       }
+
+       .carousel-control.prev {
+        left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
 
         #backToTopBtn {
             position: fixed;
@@ -254,10 +262,13 @@
             <div class="education-item">
                 <h4>Intermediate (MPC)</h4>
                 <p>Narayana SV Campus, 2018 - 2020</p>
+                <p>Percentage: 77%</p>
             </div>
             <div class="education-item">
                 <h4>High School</h4>
                 <p>The Presidential School (CBSE), 2016 - 2018</p>
+                <p>Percentage: 70%</p>
+
             </div>
 
             <h3>Interests</h3>

@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(#36d1dc, #0036ab);
+            background: linear-gradient(135deg, #00ffff, #1f51ff, #00d9d9, #0099ff);
             color: #ffffff;
             font-family: Arial, sans-serif;
         }
@@ -35,8 +34,8 @@
             background-color: #1d17cb; 
         }
 
-         /* Download Resume Button */
-         .download-btn {
+        /* Download Resume Button */
+        .download-btn {
             background-color: #41c9ff;
             color: #000000;
             border: none;
@@ -52,7 +51,6 @@
             background-color: #212520a2;
             color: #ffffff;
         }
-
 
         .contact-form {
             background-color: #222222;
@@ -94,7 +92,6 @@
         .btn-submit:hover {
             background-color: #5ccc2e;
         }
-
 
         .error-message {
             color: #ff4d4d;
@@ -138,7 +135,7 @@
                             <a class="nav-link active" href="contact.html">Contact</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link download-btn" href="./images/resume1.pdf" download target="_blank">Download Resume</a>
+                            <a class="nav-link download-btn" href="./images/resume.pdf" download target="_blank">Download Resume</a>
                         </li>
                     </ul>
                 </div>
@@ -150,54 +147,54 @@
     <div class="container">
         <div class="contact-form">
             <h2>Contact Us</h2>
-            <form id="contactForm" onsubmit="return validateForm()">
+            <form action="https://api.web3forms.com/submit" method="POST">
+                <!-- REQUIRED: Your Access key here. Don't worry this can be public -->
+                <input type="hidden" name="access_key" value="88e1b927-7d9a-4e09-a295-7237bbe8f23c">
+            
+                <!-- Optional: Subject can be prefilled using type="hidden" -->
+                <input type="hidden" name="subject" value="New Submission from Web3Forms">
+            
+                <!-- Optional: From Name you want to see in the email -->
+                <input type="hidden" name="from_name" value="Your Website Name">
+            
+                <!-- Optional: Custom Redirection or Thank you Page -->
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+            
+                <!-- Email, Name, Phone, and Message Fields -->
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+                        <input type="text" name="First Name" class="form-control" id="firstName" placeholder="First Name" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                        <input type="text" name="Last Name" class="form-control" id="lastName" placeholder="Last Name" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+                    <input type="tel" name="Phone Number" class="form-control" id="phone" placeholder="Phone Number" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea class="form-control" id="message" rows="4" placeholder="Your message" required></textarea>
+                    <textarea name="message" class="form-control" id="message" rows="4" placeholder="Your message" required></textarea>
                 </div>
+            
                 <button type="submit" class="btn-submit">Submit</button>
-                <div id="error-message" class="error-message" style="display: none;">Please fill in all fields.</div>
             </form>
+            
         </div>
     </div>
+
+    <!-- Web3Forms script -->
+    <script src="https://web3forms.com/client/script.js" async defer></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script>
-        function validateForm() {
-            var firstName = document.getElementById("firstName").value;
-            var lastName = document.getElementById("lastName").value;
-            var email = document.getElementById("email").value;
-            var phone = document.getElementById("phone").value;
-            var message = document.getElementById("message").value;
-
-            if (firstName === "" || lastName === "" || email === "" || phone === "" || message === "") {
-                document.getElementById("error-message").style.display = "block";
-                return false; 
-            }
-
-            return true;
-        }
-    </script>
 </body>
 </html>
