@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
-    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -74,46 +73,41 @@
 
         /* Carousel Styling */
         .carousel {
-         position: relative;
-         display: block;
-         width: 100%;
-         max-width: 800px; 
-         margin: 20px auto; 
-         overflow: hidden;
+            position: relative;
+            display: block;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
         }
-
-       .carousel-images {
-       display: flex;
-       transition: transform 0.5s ease;
-       width: 100%;
-       }
-
-       .carousel-images img {
-       flex-shrink: 0;  
-       width: 100%;     
-       height: auto;    
-       max-width: 100%; 
-       border-radius: 8px;
-       }
-
-       .carousel-control {
-       position: absolute;
-       top: 50%;
-       transform: translateY(-50%);
-       font-size: 2rem;
-       color: #ffffff;
-       cursor: pointer;
-       user-select: none;
-       }
-
-       .carousel-control.prev {
-        left: 10px;
-}
-
-.carousel-control.next {
-    right: 10px;
-}
-
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+        .carousel-images img {
+            flex-shrink: 0;  
+            width: 100%;     
+            height: auto;    
+            max-width: 100%; 
+            border-radius: 8px;
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #ffffff;
+            cursor: pointer;
+            user-select: none;
+        }
+        .carousel-control.prev {
+            left: 10px;
+        }
+        .carousel-control.next {
+            right: 10px;
+        }
 
         #backToTopBtn {
             position: fixed;
@@ -238,19 +232,10 @@
         </nav>
     </header>
 
+    <!-- Main Content -->
     <div class="container">
         <div class="about-section">
             <h2>About Me</h2>
-            <div class="carousel">
-                <div class="carousel-images">
-                    <img src="images/cert2.jpg" alt="Certificate 1">
-                    <img src="images/cert1.jpeg" alt="Certificate 2">
-                    <img src="images/cert3.jpeg" alt="Certificate 3">
-                </div>
-                <span class="carousel-control prev" onclick="moveSlide(-1)">&#10094;</span>
-                <span class="carousel-control next" onclick="moveSlide(1)">&#10095;</span>
-            </div>
-
             <p>Aspiring UI/UX Developer and Designer based in Vishakapatnam, eager to leverage technical skills in development and design to contribute effectively to team projects and drive creative digital solutions.</p>
             <p><strong>Certification:</strong> Completed UI/UX Developer Certification from Tech Mahindra SMART Academy, Vishakapatnam.</p>
 
@@ -268,7 +253,6 @@
                 <h4>High School</h4>
                 <p>The Presidential School (CBSE), 2016 - 2018</p>
                 <p>Percentage: 70%</p>
-
             </div>
 
             <h3>Interests</h3>
@@ -282,36 +266,50 @@
         </div>
     </div>
 
+    <!-- Carousel -->
+    <div class="carousel" id="carousel">
+        <div class="carousel-images" id="carouselImages">
+            <img src="./images/cert2.jpg" alt="Image 1">
+            <img src="./images/cert1.jpeg" alt="Image 2">
+            <img src="./images/carousel3.jpg" alt="Image 3">
+        </div>
+        <div class="carousel-control prev" onclick="prevSlide()">&#10094;</div>
+        <div class="carousel-control next" onclick="nextSlide()">&#10095;</div>
+    </div>
+
     <!-- Back to Top Button -->
-    <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+    <button id="backToTopBtn" onclick="scrollToTop()">&#8593;</button>
 
     <script>
-        let currentSlide = 0;
+        // Carousel Logic
+        const carouselImages = document.getElementById("carouselImages");
+        let currentIndex = 0;
 
-        function moveSlide(step) {
-            let images = document.querySelectorAll('.carousel-images img');
-            currentSlide = (currentSlide + step + images.length) % images.length;
-            document.querySelector('.carousel-images').style.transform = `translateX(-${currentSlide * 100}%)`;
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % carouselImages.children.length;
+            updateCarousel();
         }
 
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + carouselImages.children.length) % carouselImages.children.length;
+            updateCarousel();
+        }
 
-        window.onscroll = function() {
-            const backToTopBtn = document.getElementById("backToTopBtn");
-            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-                backToTopBtn.style.display = "block";
-            } else {
-                backToTopBtn.style.display = "none";
-            }
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carouselImages.style.transform = `translateX(${offset}%)`;
+        }
+
+        // Back to Top Button Logic
+        const backToTopBtn = document.getElementById("backToTopBtn");
+        window.onscroll = () => {
+            backToTopBtn.style.display = window.pageYOffset > 200 ? "block" : "none";
         };
 
         function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         }
     </script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
