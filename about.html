@@ -232,9 +232,21 @@
         </nav>
     </header>
 
+
+
     <!-- Main Content -->
     <div class="container">
         <div class="about-section">
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="./images/uiux.png" alt="Image 1">
+                    <img src="./images/cert2.jpg" alt="Image 2">
+                    <img src="./images/cert1.jpeg" alt="Image 3">
+                </div>
+                <div class="carousel-control prev" onclick="moveSlide(-1)">&#10094;</div>
+                <div class="carousel-control next" onclick="moveSlide(1)">&#10095;</div>
+            </div>
+       
             <h2>About Me</h2>
             <p>Aspiring UI/UX Developer and Designer based in Vishakapatnam, eager to leverage technical skills in development and design to contribute effectively to team projects and drive creative digital solutions.</p>
             <p><strong>Certification:</strong> Completed UI/UX Developer Certification from Tech Mahindra SMART Academy, Vishakapatnam.</p>
@@ -266,50 +278,38 @@
         </div>
     </div>
 
-    <!-- Carousel -->
-    <div class="carousel" id="carousel">
-        <div class="carousel-images" id="carouselImages">
-            <img src="./images/cert2.jpg" alt="Image 1">
-            <img src="./images/cert1.jpeg" alt="Image 2">
-            <img src="./images/carousel3.jpg" alt="Image 3">
-        </div>
-        <div class="carousel-control prev" onclick="prevSlide()">&#10094;</div>
-        <div class="carousel-control next" onclick="nextSlide()">&#10095;</div>
-    </div>
-
+   
     <!-- Back to Top Button -->
-    <button id="backToTopBtn" onclick="scrollToTop()">&#8593;</button>
+    <button id="backToTopBtn" onclick="scrollToTop()">&#8679;</button>
 
     <script>
-        // Carousel Logic
-        const carouselImages = document.getElementById("carouselImages");
+        // Carousel Functionality
+        const imagesContainer = document.querySelector('.carousel-images');
         let currentIndex = 0;
 
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % carouselImages.children.length;
-            updateCarousel();
+        function moveSlide(direction) {
+            const totalImages = imagesContainer.children.length;
+            currentIndex = (currentIndex + direction + totalImages) % totalImages;
+            imagesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
         }
 
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + carouselImages.children.length) % carouselImages.children.length;
-            updateCarousel();
-        }
+        // Back to Top Button Functionality
+        const backToTopBtn = document.getElementById('backToTopBtn');
 
-        function updateCarousel() {
-            const offset = -currentIndex * 100;
-            carouselImages.style.transform = `translateX(${offset}%)`;
-        }
-
-        // Back to Top Button Logic
-        const backToTopBtn = document.getElementById("backToTopBtn");
-        window.onscroll = () => {
-            backToTopBtn.style.display = window.pageYOffset > 200 ? "block" : "none";
-        };
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.display = 'block';
+            } else {
+                backToTopBtn.style.display = 'none';
+            }
+        });
 
         function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
         }
     </script>
-
 </body>
 </html>
