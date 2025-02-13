@@ -104,9 +104,13 @@
         }
         .carousel-control.prev {
             left: 10px;
+            bottom:5px;
+            color: #000000;
         }
         .carousel-control.next {
             right: 10px;
+            bottom:5px;
+            color: #000000;
         }
 
         #backToTopBtn {
@@ -245,8 +249,7 @@
                 </div>
                 <div class="carousel-control prev" onclick="moveSlide(-1)">&#10094;</div>
                 <div class="carousel-control next" onclick="moveSlide(1)">&#10095;</div>
-            </div>
-       
+            
             <h2>About Me</h2>
             <p>Aspiring UI/UX Developer and Designer based in Vishakapatnam, eager to leverage technical skills in development and design to contribute effectively to team projects and drive creative digital solutions.</p>
             <p><strong>Certification:</strong> Completed UI/UX Developer Certification from Tech Mahindra SMART Academy, Vishakapatnam.</p>
@@ -285,13 +288,13 @@
     <script>
         // Carousel Functionality
         const imagesContainer = document.querySelector('.carousel-images');
-        let currentIndex = 0;
+    let currentIndex = 0;
+    const totalImages = imagesContainer.children.length;
 
-        function moveSlide(direction) {
-            const totalImages = imagesContainer.children.length;
-            currentIndex = (currentIndex + direction + totalImages) % totalImages;
-            imagesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
+    function moveSlide(direction) {
+        currentIndex = (currentIndex + direction + totalImages) % totalImages;
+        imagesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
 
         // Back to Top Button Functionality
         const backToTopBtn = document.getElementById('backToTopBtn');
